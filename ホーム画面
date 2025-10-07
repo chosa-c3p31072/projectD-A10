@@ -28,14 +28,14 @@
       <li>
         <a href="ARカメラ試着.html">
           <div class="button-wrapper"> 
-            <img src="exercise_icon.png" alt="ARカメラ試着" aria-hidden="true">
+            <img src="exercise_icon.png" alt="カメラ試着" aria-hidden="true">
           </div> 
         </a>
       </li>
       <li>
         <a href="似合い度アンケート.html">
           <div class="button-wrapper"> 
-            <img src="exercise_icon.png" alt="似合い度アンケート" aria-hidden="true">
+            <img src="exercise_icon.png" alt="似合い度" aria-hidden="true">
           </div> 
         </a>
       </li>

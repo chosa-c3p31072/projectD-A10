@@ -19,21 +19,21 @@
         </a>
       </li>
       <li>
-        <a href="記録の確認.html" >
+        <a href="記録確認.html" >
           <div class="button-wrapper"> 
             <img src="exercise_icon.png" alt="記録確認" aria-hidden="true">
           </div>
         </a>
       </li>
       <li>
-        <a href="ARカメラ試着.html">
+        <a href="カメラ試着.html">
           <div class="button-wrapper"> 
             <img src="exercise_icon.png" alt="カメラ試着" aria-hidden="true">
           </div> 
         </a>
       </li>
       <li>
-        <a href="似合い度アンケート.html">
+        <a href="似合い度.html">
           <div class="button-wrapper"> 
             <img src="exercise_icon.png" alt="似合い度" aria-hidden="true">
           </div> 

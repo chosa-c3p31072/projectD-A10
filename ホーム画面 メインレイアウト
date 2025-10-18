@@ -1,0 +1,51 @@
+code
+Xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/home_screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ホーム画面"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/ar_trial_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_green_border"
+        android:padding="16dp"
+        android:layout_below="@id/home_screen_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:id="@+id/ar_trial_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AR試着"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"/>
+
+        <ListView
+            android:id="@+id/main_menu_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

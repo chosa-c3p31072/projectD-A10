@@ -1,0 +1,29 @@
+// MainActivity.java の一部 (onCreateメソッド内)
+
+        mainMenu.setOnItemClickListener((parent, view, position, id) -> {
+            MenuItem clickedItem = (MenuItem) parent.getItemAtPosition(position);
+            
+            // 各項目に応じた処理
+            switch (position) {
+                case 0: // ユーザー情報
+                    android.content.Intent userInfoIntent = new android.content.Intent(MainActivity.this, UserInfoActivity.class);
+                    startActivity(userInfoIntent);
+                    break;
+                case 1: // 試着カメラ
+                    android.content.Intent cameraIntent = new android.content.Intent(MainActivity.this, CameraActivity.class);
+                    startActivity(cameraIntent);
+                    break;
+                case 2: // 試着履歴
+                    android.content.Intent historyIntent = new android.content.Intent(MainActivity.this, TryOnHistoryActivity.class);
+                    startActivity(historyIntent);
+                    break;
+                case 3: // 帽子カタログ
+                    android.content.Intent catalogIntent = new android.content.Intent(MainActivity.this, HatCatalogActivity.class);
+                    startActivity(catalogIntent);
+                    break;
+                case 4: // 似合い度
+                    android.content.Intent compatibilityIntent = new android.content.Intent(MainActivity.this, CompatibilityReviewsActivity.class);
+                    startActivity(compatibilityIntent);
+                    break;
+            }
+        });

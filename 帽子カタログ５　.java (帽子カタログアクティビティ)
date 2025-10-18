@@ -1,0 +1,46 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+import android.os.Bundle;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class HatCatalogActivity extends AppCompatActivity {
+
+    private ListView hatCatalogListView;
+    private HatCatalogAdapter adapter;
+    private List<Hat> hatList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_hat_catalog);
+
+        hatCatalogListView = findViewById(R.id.hat_catalog_list);
+
+        // ダミーデータを作成 (実際にはデータベースまたはサーバーから取得)
+        hatList = new ArrayList<>();
+        hatList.add(new Hat("クラシックベースボールキャップ", "ブルー", "M (58cm)", "キャップ", R.drawable.ic_hat_blue));
+        hatList.add(new Hat("つば広ストローハット", "ベージュ", "L (60cm)", "ハット", R.drawable.ic_hat_straw)); // ic_hat_straw は別途用意
+        hatList.add(new Hat("おしゃれなベレー帽", "レッド", "フリーサイズ", "ベレー帽", R.drawable.ic_hat_beret)); // ic_hat_beret は別途用意
+        hatList.add(new Hat("アウトドアメッシュキャップ", "グリーン", "L (60cm)", "キャップ", R.drawable.ic_hat_green)); // ic_hat_green は別途用意
+        hatList.add(new Hat("フェルト中折れハット", "グレー", "M (57cm)", "ハット", R.drawable.ic_hat_fedora)); // ic_hat_fedora は別途用意
+
+
+        // カスタムアダプターを設定
+        adapter = new HatCatalogAdapter(this, hatList);
+        hatCatalogListView.setAdapter(adapter);
+
+        // リストアイテムがクリックされた場合の処理 (必要であれば)
+        hatCatalogListView.setOnItemClickListener((parent, view, position, id) -> {
+            Hat selectedHat = hatList.get(position);
+            android.widget.Toast.makeText(this, selectedHat.getName() + " の詳細表示", android.widget.Toast.LENGTH_SHORT).show();
+            // 例: 詳細画面へ遷移するIntentをここで作成
+            // Intent detailIntent = new Intent(HatCatalogActivity.this, HatDetailActivity.class);
+            // detailIntent.putExtra("selected_hat", selectedHat); // SerializableまたはParcelableを実装する必要あり
+            // startActivity(detailIntent);
+        });
+    }
+}

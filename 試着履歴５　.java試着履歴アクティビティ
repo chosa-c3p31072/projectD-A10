@@ -1,0 +1,48 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+import android.os.Bundle;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class TryOnHistoryActivity extends AppCompatActivity {
+
+    private ListView historyListView;
+    private TryOnHistoryAdapter adapter;
+    private List<TryOnHistory> tryOnHistoryList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_try_on_history);
+
+        historyListView = findViewById(R.id.try_on_history_list);
+
+        // ダミーデータを作成 (実際にはSharedPreferences, SQLite, またはサーバーから取得)
+        tryOnHistoryList = new ArrayList<>();
+        tryOnHistoryList.add(new TryOnHistory(new Date(System.currentTimeMillis() - 86400000 * 2), "ベースボールキャップ", "カジュアル", "L (60cm)")); // 2日前
+        tryOnHistoryList.add(new TryOnHistory(new Date(System.currentTimeMillis() - 86400000 * 5), "つば広ハット", "エレガント", "M (58cm)")); // 5日前
+        tryOnHistoryList.add(new TryOnHistory(new Date(System.currentTimeMillis() - 86400000 * 10), "ニット帽", "防寒", "フリーサイズ")); // 10日前
+        tryOnHistoryList.add(new TryOnHistory(new Date(System.currentTimeMillis() - 86400000 * 15), "ベレー帽", "ファッション", "S (56cm)")); // 15日前
+        // 現在時刻のダミーデータ
+        tryOnHistoryList.add(new TryOnHistory(new Date(), "おしゃれキャップ", "カジュアル", "M (58cm)"));
+
+
+        // カスタムアダプターを設定
+        adapter = new TryOnHistoryAdapter(this, tryOnHistoryList);
+        historyListView.setAdapter(adapter);
+
+        // リストアイテムがクリックされた場合の処理 (必要であれば)
+        historyListView.setOnItemClickListener((parent, view, position, id) -> {
+            TryOnHistory selectedHistory = tryOnHistoryList.get(position);
+            android.widget.Toast.makeText(this, selectedHistory.getHatName() + " の詳細表示", android.widget.Toast.LENGTH_SHORT).show();
+            // 例: 詳細画面へ遷移するIntentをここで作成
+            // Intent detailIntent = new Intent(TryOnHistoryActivity.this, HistoryDetailActivity.class);
+            // detailIntent.putExtra("history_item", selectedHistory); // SerializableまたはParcelableを実装する必要あり
+            // startActivity(detailIntent);
+        });
+    }
+}

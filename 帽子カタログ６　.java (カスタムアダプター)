@@ -1,0 +1,50 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.List;
+
+public class HatCatalogAdapter extends ArrayAdapter<Hat> {
+
+    private final LayoutInflater inflater;
+
+    public HatCatalogAdapter(@NonNull Context context, @NonNull List<Hat> objects) {
+        super(context, 0, objects);
+        inflater = LayoutInflater.from(context);
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.list_item_hat_catalog, parent, false);
+        }
+
+        Hat currentHat = getItem(position);
+
+        ImageView hatThumbnail = convertView.findViewById(R.id.image_hat_thumbnail);
+        TextView hatName = convertView.findViewById(R.id.text_hat_name);
+        TextView hatColor = convertView.findViewById(R.id.text_hat_color);
+        TextView hatSize = convertView.findViewById(R.id.text_hat_size);
+        TextView hatCategory = convertView.findViewById(R.id.text_hat_category);
+
+        if (currentHat != null) {
+            hatThumbnail.setImageResource(currentHat.getImageResId());
+            hatName.setText(currentHat.getName());
+            hatColor.setText(currentHat.getColor());
+            hatSize.setText(currentHat.getSize());
+            hatCategory.setText(currentHat.getCategory());
+        }
+
+        return convertView;
+    }
+}

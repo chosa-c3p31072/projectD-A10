@@ -1,0 +1,29 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+public class CompatibilityReview {
+    private String hatName;
+    private String reviewerNickname;
+    private boolean isCompatible; // true:似合っている, false:似合わない
+
+    public CompatibilityReview(String hatName, String reviewerNickname, boolean isCompatible) {
+        this.hatName = hatName;
+        this.reviewerNickname = reviewerNickname;
+        this.isCompatible = isCompatible;
+    }
+
+    public String getHatName() {
+        return hatName;
+    }
+
+    public String getReviewerNickname() {
+        return reviewerNickname;
+    }
+
+    public boolean isCompatible() {
+        return isCompatible;
+    }
+
+    public String getCompatibilityText() {
+        return isCompatible ? "似合っている" : "似合わない";
+    }
+}

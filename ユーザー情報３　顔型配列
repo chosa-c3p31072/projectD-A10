@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ARTrialApp</string> <!-- あなたのアプリ名 -->
+
+    <string-array name="face_shapes_array">
+        <item>丸顔</item>
+        <item>卵型</item>
+        <item>面長</item>
+        <item>ベース型</item>
+        <item>逆三角形</item>
+        <item>ひし形</item>
+        <item>その他</item>
+    </string-array>
+</resources>

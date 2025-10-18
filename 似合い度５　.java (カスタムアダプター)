@@ -1,0 +1,53 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.List;
+
+public class CompatibilityReviewAdapter extends ArrayAdapter<CompatibilityReview> {
+
+    private final LayoutInflater inflater;
+
+    public CompatibilityReviewAdapter(@NonNull Context context, @NonNull List<CompatibilityReview> objects) {
+        super(context, 0, objects);
+        inflater = LayoutInflater.from(context);
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.list_item_compatibility_review, parent, false);
+        }
+
+        CompatibilityReview currentReview = getItem(position);
+
+        TextView hatName = convertView.findViewById(R.id.text_hat_name);
+        TextView reviewerNickname = convertView.findViewById(R.id.text_reviewer_nickname);
+        TextView compatibilityStatus = convertView.findViewById(R.id.text_compatibility_status);
+
+        if (currentReview != null) {
+            hatName.setText(currentReview.getHatName());
+            reviewerNickname.setText(currentReview.getReviewerNickname());
+            compatibilityStatus.setText(currentReview.getCompatibilityText());
+
+            // 似合い度に応じてテキストの色を変更
+            if (currentReview.isCompatible()) {
+                compatibilityStatus.setTextColor(Color.parseColor("#4CAF50")); // 緑色
+            } else {
+                compatibilityStatus.setTextColor(Color.parseColor("#F44336")); // 赤色
+            }
+        }
+
+        return convertView;
+    }
+}

@@ -1,0 +1,44 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+import android.os.Bundle;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CompatibilityReviewsActivity extends AppCompatActivity {
+
+    private ListView reviewsListView;
+    private CompatibilityReviewAdapter adapter;
+    private List<CompatibilityReview> reviewList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_compatibility_reviews);
+
+        reviewsListView = findViewById(R.id.compatibility_reviews_list);
+
+        // ダミーデータを作成 (実際にはサーバーAPIなどから取得)
+        reviewList = new ArrayList<>();
+        reviewList.add(new CompatibilityReview("帽子A", "〇〇××", true)); // 似合っている
+        reviewList.add(new CompatibilityReview("帽子B", "××〇〇", false)); // 似合わない
+        reviewList.add(new CompatibilityReview("帽子C", "△△□□", true)); // 似合っている
+        reviewList.add(new CompatibilityReview("帽子A", "山田太郎", true));
+        reviewList.add(new CompatibilityReview("帽子C", "佐藤花子", false));
+        reviewList.add(new CompatibilityReview("帽子B", "鈴木一郎", true));
+
+
+        // カスタムアダプターを設定
+        adapter = new CompatibilityReviewAdapter(this, reviewList);
+        reviewsListView.setAdapter(adapter);
+
+        // リストアイテムがクリックされた場合の処理 (必要であれば)
+        reviewsListView.setOnItemClickListener((parent, view, position, id) -> {
+            CompatibilityReview selectedReview = reviewList.get(position);
+            android.widget.Toast.makeText(this, selectedReview.getHatName() + " の評価詳細", android.widget.Toast.LENGTH_SHORT).show();
+            // 例: 詳細画面へ遷移するIntentをここで作成
+        });
+    }
+}

@@ -1,0 +1,37 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+public class Hat {
+    private String name;
+    private String color;
+    private String size;
+    private String category;
+    private int imageResId; // 帽子の画像リソースID
+
+    public Hat(String name, String color, String size, String category, int imageResId) {
+        this.name = name;
+        this.color = color;
+        this.size = size;
+        this.category = category;
+        this.imageResId = imageResId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getImageResId() {
+        return imageResId;
+    }
+}

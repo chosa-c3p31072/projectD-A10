@@ -1,0 +1,40 @@
+package com.example.artrialapp; // あなたのプロジェクトのパッケージ名に合わせてください
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class TryOnHistory {
+    private Date tryOnDate;
+    private String hatName;
+    private String hatType;
+    private String hatSize;
+
+    public TryOnHistory(Date tryOnDate, String hatName, String hatType, String hatSize) {
+        this.tryOnDate = tryOnDate;
+        this.hatName = hatName;
+        this.hatType = hatType;
+        this.hatSize = hatSize;
+    }
+
+    public Date getTryOnDate() {
+        return tryOnDate;
+    }
+
+    public String getFormattedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm", Locale.JAPAN);
+        return sdf.format(tryOnDate);
+    }
+
+    public String getHatName() {
+        return hatName;
+    }
+
+    public String getHatType() {
+        return hatType;
+    }
+
+    public String getHatSize() {
+        return hatSize;
+    }
+}
